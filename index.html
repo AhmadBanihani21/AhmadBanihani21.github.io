@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ahmad Banihani | Full Stack Developer</title>
+  <meta name="description" content="Ahmad Banihani is a full stack developer in Amman, Jordan, building enterprise web applications with .NET and Angular.">
+  <meta property="og:title" content="Ahmad Banihani | Full Stack Developer">
+  <meta property="og:description" content="Enterprise web applications with .NET and Angular. Projects, experience and contact.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310141A'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23C8F135' text-anchor='middle'%3EAB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="Ahmad Banihani, back to top"><span class="brand__mark">AB</span></a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">Theme</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <p class="pill"><span class="pill__dot" aria-hidden="true"></span>Currently at eSense, Amman, Jordan</p>
+        <h1 class="hero__name">Ahmad <span class="grad">Banihani</span></h1>
+        <p class="hero__lead">Full stack developer building enterprise web applications with .NET and Angular, from the database design to the screen people use every day.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#work">See my work</a>
+          <a class="btn" href="AhmadBanihani_Resume.pdf" download>Download CV</a>
+        </div>
+      </div>
+      <dl class="wrap facts reveal">
+        <div class="card"><dt>Now</dt><dd>Software Development Engineer at eSense</dd></div>
+        <div class="card"><dt>Core stack</dt><dd>.NET 8 Web API, Angular 17, SQL Server</dd></div>
+        <div class="card"><dt>Recognition</dt><dd>3rd place, TAHALUF GenAI Hackathon 2024</dd></div>
+      </dl>
+    </section>
+
+    <section class="section wrap" id="work" aria-labelledby="work-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">Projects</p>
+        <h2 id="work-title">Selected work</h2>
+      </header>
+
+      <div class="bento">
+        <article class="card project project--split reveal">
+          <div class="project__text">
+            <p class="eyebrow">2026 · ASP.NET Core, Angular</p>
+            <h3>Accounting Information System</h3>
+            <p>A multi-tenant system for running a business: stores, daily sales, store costs, employees, salaries, advances and bonuses. Each tenant's data stays separate, because the tenant is resolved from a claim in the signed JWT.</p>
+            <ul class="points">
+              <li>Clean Architecture, so business rules don't depend on persistence or delivery</li>
+              <li>Generic base repository, with specialized repositories for domain queries</li>
+              <li>Angular interceptors handle bearer tokens and 401, 403, 404 and 500 responses in one place</li>
+              <li>Route guards protect pages and check token expiry</li>
+            </ul>
+            <a class="link" href="https://github.com/AhmadBanihani21/AccountingSystem">View code on GitHub <span aria-hidden="true">→</span></a>
+          </div>
+          <figure class="panel" aria-label="Architecture layers and token claims">
+            <figcaption class="eyebrow">Solution layers</figcaption>
+            <ol class="layers">
+              <li><b>API / UI</b><span>Controllers, Angular app</span></li>
+              <li><b>Infrastructure</b><span>Repositories, persistence, security</span></li>
+              <li><b>Application</b><span>Use cases and services</span></li>
+              <li class="is-core"><b>Core</b><span>Domain entities and business rules</span></li>
+            </ol>
+            <p class="eyebrow panel__label">JWT claims</p>
+<pre class="code"><code>{
+  "userId":   "…",
+  <mark>"tenantId": "…"</mark>,  // resolved by TenantProvider
+  "role":     "…",
+  "lang":     "…"
+}</code></pre>
+          </figure>
+        </article>
+
+        <article class="card project project--wide reveal" id="signalr">
+          <div class="project__text project__text--row">
+            <div>
+              <p class="eyebrow">2026 · ASP.NET Core 8, SignalR, Next.js</p>
+              <h3>SignalR Message Routing Visualizer</h3>
+              <p>A teaching tool that shows who receives each message for every <code>Clients.*</code> API. The key lesson is that a user is not a connection: one person can hold several sockets.</p>
+              <a class="link" href="https://github.com/AhmadBanihani21/SignalRApp">View code on GitHub <span aria-hidden="true">→</span></a>
+            </div>
+            <p class="note">Try it below. This is a small in-browser recreation of the project's routing rules, with no server behind it. Ahmad on Chrome is the caller.</p>
+          </div>
+
+          <div class="demo" id="demo">
+            <div class="demo__controls" role="group" aria-label="Choose a SignalR target" id="demoControls"></div>
+            <div class="demo__stage">
+              <div class="hub">
+                <span class="eyebrow">NotificationHub</span>
+                <code id="demoCode"></code>
+              </div>
+              <ul class="conns" id="demoConns"></ul>
+            </div>
+            <p class="demo__result" id="demoResult" aria-live="polite"></p>
+          </div>
+        </article>
+
+        <article class="card project project--split project--award reveal">
+          <div class="award" aria-label="Third place">
+            <span class="award__num grad">3rd</span>
+            <span class="eyebrow">place, TAHALUF GenAI Hackathon</span>
+          </div>
+          <div class="project__text">
+            <p class="eyebrow">2024 · 48-hour team build</p>
+            <h3>Shura <span lang="ar" dir="rtl">شورى</span>: Legal AI Assistant</h3>
+            <p>An AI-powered online consulting platform that summarizes and analyzes legal documents, aimed at making Jordanian law easier to understand. Our team built it in a weekend.</p>
+            <a class="link" href="https://github.com/AhmadBanihani21/hackathon">View code on GitHub <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="card mini project--six reveal">
+          <p class="eyebrow">Angular 16, TypeScript</p>
+          <h3>Online Store System</h3>
+          <p>Storefront application built in Angular.</p>
+          <a class="link" href="https://github.com/AhmadBanihani21/Angular-Project">View code on GitHub <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card mini project--six reveal">
+          <p class="eyebrow">2023 · Machine learning</p>
+          <h3>Loan Approval Prediction System</h3>
+          <p>Decision Tree model that predicts loan approval outcomes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="experience" aria-labelledby="exp-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">Career</p>
+        <h2 id="exp-title">Experience</h2>
+      </header>
+
+      <ol class="jobs">
+        <li class="job reveal">
+          <p class="eyebrow job__date">Aug 2024 – Present</p>
+          <div class="card">
+            <h3>Software Development Engineer</h3>
+            <p class="job__org">eSense Software, Amman. Joined as an intern, full-time since Nov 2024.</p>
+            <ul class="points">
+              <li>Build enterprise web applications with .NET 8 Web API and Angular 17</li>
+              <li>Design and consume REST APIs with JWT authentication and role-based authorization</li>
+              <li>Improve frontend performance with lazy loading, reactive forms and optimized change detection</li>
+              <li>Take on complex debugging and refactoring, review code and mentor interns</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="eyebrow job__date">Mar 2024 – Jun 2024</p>
+          <div class="card">
+            <h3>Software Development Intern</h3>
+            <p class="job__org">Tahaluf Al Emarat Technical Solutions, Abu Dhabi (remote)</p>
+            <ul class="points">
+              <li>Worked on large-scale systems using ASP.NET Core Web API and Angular</li>
+              <li>Implemented CRUD operations and modular components</li>
+              <li>Helped debug and resolve performance issues in deployed applications</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="eyebrow job__date">Mar 2023 – Jul 2023</p>
+          <div class="card">
+            <h3>Software Development Intern</h3>
+            <p class="job__org">Tuned Applications</p>
+            <ul class="points">
+              <li>Contributed to full-stack development with ASP.NET MVC and SQL Server</li>
+              <li>Built responsive UIs connected to backend services</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section wrap" id="writing" aria-labelledby="writing-title">
+      <div class="card writing reveal">
+        <div>
+          <p class="eyebrow" id="writing-title">Writing</p>
+          <blockquote class="grad">SSO is the outcome. OIDC and SAML are two protocols that deliver it.</blockquote>
+        </div>
+        <div>
+          <p>I write short explainers on LinkedIn about identity and authentication, including how SSO works and when to choose OIDC over SAML.</p>
+          <a class="link" href="https://www.linkedin.com/in/ahmadbanihani/recent-activity/all/">Read my posts on LinkedIn <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="skills" aria-labelledby="skills-title">
+      <header class="section__head reveal">
+        <p class="eyebrow">Toolbox</p>
+        <h2 id="skills-title">Skills and education</h2>
+      </header>
+      <div class="skills">
+        <div class="card reveal"><h3 class="eyebrow">Languages</h3><ul class="chips"><li>C#</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>Python</li></ul></div>
+        <div class="card reveal"><h3 class="eyebrow">Backend</h3><ul class="chips"><li>.NET</li><li>Web API</li><li>EF Core</li><li>LINQ</li><li>JWT</li><li>REST</li></ul></div>
+        <div class="card reveal"><h3 class="eyebrow">Frontend</h3><ul class="chips"><li>Angular</li><li>RxJS</li><li>Forms</li><li>Routing</li></ul></div>
+        <div class="card reveal"><h3 class="eyebrow">Databases</h3><ul class="chips"><li>SQL Server</li><li>PostgreSQL</li><li>MySQL</li></ul></div>
+        <div class="card reveal"><h3 class="eyebrow">Tools</h3><ul class="chips"><li>Git</li><li>Azure DevOps</li><li>Postman</li><li>Visual Studio</li><li>VS Code</li></ul></div>
+        <div class="card reveal"><h3 class="eyebrow">Spoken</h3><ul class="chips"><li>Arabic (native)</li><li>English (fluent)</li></ul></div>
+        <div class="card skills__edu reveal"><h3 class="eyebrow">Education</h3><p><b>Bachelor’s in Computer and Information Systems</b><br>Jordan University of Science and Technology, 2020–2024. GPA: Very Good.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer" id="contact">
+    <div class="contact reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Have a role or project in mind?</h2>
+      <a class="contact__mail" href="mailto:banihania91@gmail.com">banihania91@gmail.com</a>
+      <ul class="contact__links">
+        <li><a href="https://www.linkedin.com/in/ahmadbanihani">LinkedIn</a></li>
+        <li><a href="https://github.com/AhmadBanihani21">GitHub</a></li>
+        <li><a href="AhmadBanihani_Resume.pdf" download>CV (PDF)</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
